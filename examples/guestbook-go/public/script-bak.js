@@ -3,11 +3,7 @@ $(document).ready(function() {
   var entriesElement = $("#guestbook-entries");
   var formElement = $("#guestbook-form");
   var submitElement = $("#guestbook-submit");
-  var eid = $("#eid_signup");
-  var ig = $("#ig_signup");
-  var level = $("#level_signup");
-  var capab = $("#capab_signup");
-  //var entryContentElement = $("#guestbook-entry-content");
+  var entryContentElement = $("#guestbook-entry-content");
   var hostAddressElement = $("#guestbook-host-address");
 
   var appendGuestbookEntries = function(data) {
@@ -19,7 +15,7 @@ $(document).ready(function() {
 
   var handleSubmission = function(e) {
     e.preventDefault();
-    var entryValue = eid.val() + ig.val() + level.val() + capab.val()
+    var entryValue = entryContentElement.val()
     if (entryValue.length > 0) {
       entriesElement.append("<p>...</p>");
       $.getJSON("rpush/guestbook/" + entryValue, appendGuestbookEntries);
@@ -32,7 +28,7 @@ $(document).ready(function() {
   var randomColor = colors[Math.floor(5 * Math.random())];
   (function setElementsColor(color) {
     headerTitleElement.css("color", color);
-    eid.css("box-shadow", "inset 0 0 0 2px " + color);
+    entryContentElement.css("box-shadow", "inset 0 0 0 2px " + color);
     submitElement.css("background-color", color);
   })(randomColor);
 
